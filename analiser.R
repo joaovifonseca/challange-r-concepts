@@ -101,4 +101,44 @@ ru_comments <- csv_clean %>%
 uk_comments <- csv_clean %>%
   filter(str_detect(body, "Ukrain"))
 
+countries <- c("Russia", "Ukraine")
+
+# Gráfico com posts dos dois países
+posts <- c(nrow(ru_posts), nrow(uk_posts))
+barplot(posts,
+        main = "Posts talking about the Russia and Ukraine war",
+        xlab = "Posts number",
+        names.arg = countries,
+        col = c("blue","yellow"),
+        horiz = TRUE,
+        )
+
+
+# Gráfico com comentários dos dois países
+comments <- c(nrow(ru_comments), nrow(uk_comments))
+barplot(comments,
+        main = "Comments talking about the Russia and Ukraine war",
+        xlab = "Comments number",
+        ylab = "Country",
+        names.arg = countries,
+        col = c("blue","yellow"),
+        horiz = TRUE,
+        )
+
+# Gráfico com comentários e posts dos dois países
+social_interaction <- c(nrow(ru_posts), nrow(uk_posts), nrow(ru_comments), nrow(uk_comments))
+barplot(social_interaction,
+        main = "Social interaction in Reddit about Russia and Ukraine's war",
+        names.arg = c("Posts", "Posts", "Comments", "Comments"),
+        col = c("blue","yellow","blue","yellow"),
+        legend = countries
+        )
+
+
+
+
+
+
+
+
 
